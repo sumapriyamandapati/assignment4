@@ -1,0 +1,53 @@
+{
+  "name": "ui",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sumapriyamandapati/assignment4.git"
+  },
+  "keywords": [],
+  "author": "Sumapriya",
+  "bugs": {
+    "url": "https://github.com/sumapriyamandapati/assignment4/issues"
+  },
+  "scripts": {
+    "serve:dev": "webpack serve --config webpack.dev.config.ts",
+    "build": "webpack --config webpack.prod.config.ts"
+  },
+  "dependencies": {
+    "babel": "^6.23.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hot-loader": "^4.13.0"
+  },
+  "devDependencies": {
+    "@apollo/client": "^3.5.9",
+    "@babel/core": "^7.17.5",
+    "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
+    "@babel/runtime": "^7.17.2",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
+    "@types/webpack-dev-server": "^4.7.2",
+    "@typescript-eslint/eslint-plugin": "^5.12.1",
+    "@typescript-eslint/parser": "^5.12.1",
+    "axios": "^0.26.0",
+    "babel-loader": "^8.2.3",
+    "bootstrap": "^5.1.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^5.1.3",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.5.3",
+    "sass": "^1.49.9",
+    "sass-loader": "^12.6.0",
+    "style-loader": "^2.0.0",
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^3.11.3"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sumapriyamandapati/assignment4.git"
+  },
+  "keywords": [],
+  "author": "Sumapriya",
+  "bugs": {
+    "url": "https://github.com/sumapriyamandapati/assignment4/issues"
+  },
+  "scripts": {
+    "serve:dev": "webpack serve --config webpack.dev.config.ts",
+    "serve": "nodemon -w server server/server.js",
+    "build": "nodemon -w server server/server.js"
+  },
+  "dependencies": {
+    "apollo-server-express": "^3.6.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "express-graphql": "^0.12.0",
+    "graphql": "^16.3.0",
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "@apollo/client": "^3.5.9",
+    "@typescript-eslint/eslint-plugin": "^5.12.1",
+    "@typescript-eslint/parser": "^5.12.1",
+  }
+}
