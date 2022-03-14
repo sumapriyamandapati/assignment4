@@ -1,6 +1,6 @@
-import path from "path";
 import { Configuration, HotModuleReplacementPlugin } from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+const Dotenv = require('dotenv-webpack');
 
 const config: Configuration = {
     mode: "development",
@@ -45,9 +45,10 @@ const config: Configuration = {
             template: "src/index.html",
         }),
         new HotModuleReplacementPlugin(),
+        new Dotenv()
     ],
     devtool: "inline-source-map",
-    watch: true
+    watch: true,
 };
 
 export default config;

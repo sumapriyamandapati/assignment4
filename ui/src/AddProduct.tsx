@@ -1,4 +1,4 @@
-import React, {Dispatch, FormEvent, SetStateAction, useEffect} from "react"
+import React, {Dispatch, SetStateAction, useEffect} from "react"
 import "./Products.scss"
 import {gql, useMutation} from "@apollo/client";
 import {Product} from "./Products";
@@ -19,16 +19,19 @@ const ADD_PRODUCT = gql(`
 
 export interface AddProductProps {
     products: { products: Array<Product> }
-    setProducts: Dispatch<SetStateAction<{ products: Array<Product> }>>
+    setProducts: Dispatch<SetStateAction<{ products: Array<Product>, error: boolean }>>
 }
 
 export const AddProduct = (props: AddProductProps) => {
 
-    const [addProduct, { data, loading, error }] = useMutation(ADD_PRODUCT);
+    const [addProduct, { data, error }] = useMutation(ADD_PRODUCT);
 
     useEffect(() => {
+        if (error) {
+            props.setProducts({ products: [ ...props.products.products], error: true })
+        }
         if (data) {
-            props.setProducts({ products: [ ...props.products.products, data.addNewProduct] })
+            props.setProducts({ products: [ ...props.products.products, data.addNewProduct], error: false })
         }
     }, [data])
 
@@ -40,7 +43,7 @@ export const AddProduct = (props: AddProductProps) => {
                 "product": {
                     "Category": formData.get("category"),
                     "Name": formData.get("productName"),
-                    "Price": formData.get("price") ? parseFloat(formData.get("price") as string) : 0.0,
+                    "Price": formData.get("price") ? isNaN(parseFloat(formData.get("price") as string)) ? 0.0 : parseFloat(formData.get("price") as string) : 0.0,
                     "Image": formData.get("imageUrl")
                 }
             }

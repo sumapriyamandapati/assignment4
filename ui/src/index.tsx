@@ -5,13 +5,11 @@ import {Products} from "./Products";
 import {
     ApolloClient,
     InMemoryCache,
-    ApolloProvider,
-    useQuery,
-    gql
+    ApolloProvider
 } from "@apollo/client";
 
 const client = new ApolloClient({
-    uri: 'http://localhost:3000/graphql',
+    uri: process.env.API_SERVER,
     cache: new InMemoryCache()
 });
 

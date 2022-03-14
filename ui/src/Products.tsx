@@ -68,24 +68,33 @@ const ProductTable = (props: ProductProps) => {
 
 export const Products = (props: any) => {
 
-    const [state, setState] = useState<{ products: Array<Product> }>({ products: [] })
+    const [state, setState] = useState<{ products: Array<Product>, error: boolean }>({ products: [], error: false })
 
     const { loading, error, data } = useQuery(GET_ALL_PRODUCTS);
 
     useEffect(() => {
-        getProducts()
-    }, [data])
+        if (error) {
+            setState({ ...state, error: true })
+        } else {
+            getProducts()
+        }
+    }, [data, error])
 
     function getProducts() {
 
         if (loading) return 'Loading...';
         if (error) return `Error! ${error.message}`;
 
-        setState({ products: data.getAllProducts })
+        setState({ ...state, products: data.getAllProducts })
     }
 
     return (
         <div className="main_div">
+            {
+                state.error && <div className="alert alert-danger" role="alert">
+                    This is a danger alert—check it out!
+                </div>
+            }
             <h1>My Company Inventory</h1>
             <div className="table_heading">Showing all available products.</div>
             <ProductTable products={state.products} />
